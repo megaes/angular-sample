@@ -1,0 +1,45 @@
+<form>
+  <div class="form-row mb-4">
+    <div class="col-3 ml-auto">
+        <select class="form-control shadow-none" (change)="onChangeType($event.target.value)">
+        <option
+          *ngFor="let type of filterTypes"
+          [value]="type"
+          [selected]="filterService.items[filterIndex].getType() === type"
+        >
+          {{ type + ' field' }}
+        </option>
+      </select>
+    </div>
+    <div class="col-3">
+      <select class="form-control shadow-none" [(ngModel)]="filterService.items[filterIndex].operation" name="operation">
+        <option
+          *ngFor="let operation of filterOperations;"
+          [value]="operation[1]"
+        >
+          {{ operation[0] }}
+        </option>
+      </select>
+    </div>
+    <div class="col-3">
+      <input
+        [type]="getItemType()"
+        class="form-control shadow-none"
+        [(ngModel)]="filterService.items[filterIndex].value"
+        name="value"
+      >
+    </div>
+    <div class="col-1 shadow-none mr-auto">
+      <button
+        *ngIf="filterService.items.length > 1"
+        type="button"
+        class="btn btn-outline-secondary border-0"
+        (click)="filterService.remove(filterIndex)"
+      >
+        X
+      </button>
+    </div>
+  </div>
+</form>
+
+

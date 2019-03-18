@@ -1,0 +1,21 @@
+<div class="container">
+  <app-filter-item *ngFor="let item of filterService.items; let i = index" [filterIndex]="i"></app-filter-item>
+  <div class="row">
+    <div class="col-10 ml-auto mr-auto">
+      <button
+        type="button"
+        class="btn btn-outline-primary shadow-none border-0 ml-1"
+        [disabled]="filterService.items.length >= 10"
+        (click)="filterService.add()"
+      >
+        + Add Condition
+      </button>
+      <div class="line mt-3 mb-3"></div>
+      <button type="button" class="btn btn-outline-primary shadow-none ml-3" (click)="onApply()">Apply</button>
+      <button type="button" class="btn btn-outline-secondary shadow-none ml-2" (click)="filterService.clear()">
+        Clear Filter
+      </button>
+    </div>
+  </div>
+</div>
+
